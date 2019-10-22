@@ -1,3 +1,7 @@
+import time
+t0 = time.time()
+
+
 import sys
 sys.setrecursionlimit(10000)
 
@@ -9,18 +13,13 @@ def long_division(dividend, divisor, zero_remainder=None):
         master_dict[wrapper_long_div.num] = wrapper_long_div.quotient_string
         return
 
-    # recursion
-    if zero_remainder != None:
-        wrapper_long_div.quotient_string += "0"
-        wrapper_long_div.count += 1
-        return long_division(dividend, divisor, zero_remainder)
     if divisor > dividend:
         dividend = dividend * 10
         wrapper_long_div.quotient_string += str(dividend//divisor)
         wrapper_long_div.count += 1
         dividend = dividend - (dividend//divisor * divisor)
         if dividend == 0:
-            return long_division(dividend, divisor, zero_remainder=True)
+            return
         else:
             return long_division(dividend, divisor)
     else:
@@ -66,3 +65,7 @@ for i in new_dict:
         record = new_dict[i]
         record_tuple = (i, record)
 print(record_tuple)
+
+t1 = time.time()
+total = t1-t0
+print(total)
