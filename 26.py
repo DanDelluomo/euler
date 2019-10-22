@@ -7,9 +7,9 @@ sys.setrecursionlimit(10000)
 
 master_dict = {}
 
-def long_division(dividend, divisor, zero_remainder=None):
+def long_division(dividend, divisor):
     # base case
-    if wrapper_long_div.count == 5000:
+    if wrapper_long_div.count == 3000:
         master_dict[wrapper_long_div.num] = wrapper_long_div.quotient_string
         return
 
@@ -44,7 +44,6 @@ def longest_repeating(dict_index, string):
     local_repeating = {
     }
 
-
     for index, value in enumerate(string):
         local_repeating[index] = value
         for j in local_repeating:
@@ -65,6 +64,7 @@ for i in new_dict:
         record = new_dict[i]
         record_tuple = (i, record)
 print(record_tuple)
+
 
 t1 = time.time()
 total = t1-t0
