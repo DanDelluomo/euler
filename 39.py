@@ -1,9 +1,16 @@
-Champernowne_Constant = "0.123456789"
-count = 9
+import math
+max_solutions = (0, None)
 
-while len(Champernowne_Constant) < 1600007:
-	count += 1
-	Champernowne_Constant += str(count)
+for i in range(2, 1001, 2):
+    solutions = 0
+    for j in range(1, int(i/3)):
+        remainder = math.ceil((i - j) / 2)
+        for k in range(j, remainder):
+            l = math.sqrt( (j ** 2) + (k ** 2) )
+            if j + k + l == i:
+                solutions += 1
 
-answer = int(Champernowne_Constant[2]) * int(Champernowne_Constant[11]) * int(Champernowne_Constant[101]) * int(Champernowne_Constant[1001]) * int(Champernowne_Constant[10001]) * int(Champernowne_Constant[100001]) * int(Champernowne_Constant[1000001]) 
-print(answer)
+    if solutions > max_solutions[0]:
+        max_solutions = (solutions, i)
+
+print(max_solutions)

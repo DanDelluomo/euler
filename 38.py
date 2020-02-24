@@ -1,16 +1,17 @@
-import math
-max_solutions = (0, None)
+def checker(concat_number) -> bool:
+    if '0' in concat_number:
+        return False
+    for i in '123456789':
+        if concat_number.count(i) != 1:
+            return False
+    return True
 
-for i in range(2, 1001, 2):
-    solutions = 0
-    for j in range(1, int(i/3)):
-        remainder = math.ceil((i - j) / 2)
-        for k in range(j, remainder):
-            l = math.sqrt( (j ** 2) + (k ** 2) )
-            if j + k + l == i:
-                solutions += 1
+pandigit_multiples = []
+for i in range(1, 10000):
+    pandigits = str(i)
+    for j in range(2, 9):
+        pandigits += str(i * j)
+        if checker(pandigits):
+            pandigit_multiples.append(int(pandigits))
 
-    if solutions > max_solutions[0]:
-        max_solutions = (solutions, i)
-
-print(max_solutions)
+print(max(pandigit_multiples))
